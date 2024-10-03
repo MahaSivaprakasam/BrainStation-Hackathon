@@ -45,7 +45,7 @@ const InputImage = () => {
     <div>
       <h1>Color Extractor</h1>
       <ImageList imageURLs={imageURLs} setSelectedImage={setSelectedImage}/>
-      <h3>The primary color is: {colors}</h3>
+      <h3 style={{ color: colors}}>The primary color is: {colors}</h3>
 
     </div>
   );
