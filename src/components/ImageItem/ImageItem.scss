@@ -1,0 +1,10 @@
+.image-list{
+    &__thumbnail{
+        border-radius: .25rem;
+        height: 12rem;  
+        width: 12rem;
+        object-fit: cover;  
+    }
+
+
+}

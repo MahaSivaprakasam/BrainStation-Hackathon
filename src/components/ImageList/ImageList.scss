@@ -1,0 +1,11 @@
+.image-list{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    row-gap: 0.25rem;
+    column-gap: 0.25rem;
+    &__wrapper{
+        width: 50%;
+    }
+}
