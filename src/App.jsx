@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import ImageDisplaySection from './components/ImageDisplaySection/ImageDisplaySection'
-import './App.css'
+import './App.scss'
 
 function App() {
   // const [query, setQuery] = useState('');
@@ -8,12 +8,12 @@ function App() {
 
   // For testing
   const query='nature';
-  const color='#008000';
+  const color='008080';
 
   return (
-    <div>
+    <main className='image'>
       <ImageDisplaySection query={query} color={color} />
-    </div>
+    </main>
   )
 }
 

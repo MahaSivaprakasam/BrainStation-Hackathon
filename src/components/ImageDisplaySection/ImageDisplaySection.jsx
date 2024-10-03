@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {useEffect, useState} from 'react';
+import {saveAs} from 'file-saver';
 import "./ImageDisplaySection.scss";
 
     
@@ -29,14 +30,8 @@ export default function ImageDisplaySection({query,color}){
         getImages();
     }, [query, color]);
 
-    if(images.length===0){
-        return(
-            <div>
-                <div>No images found</div>
-            </div>
-        );
-    }
 
+//Share functionality
     const shareImage = (image) => {
         if (navigator.share) {
             navigator.share({
@@ -49,17 +44,34 @@ export default function ImageDisplaySection({query,color}){
             alert(`Share this image: ${image.url}`);
         }
     };
+
+    // Download functionality
+    const downloadImage = (image) => {
+        saveAs(image.src.original, `${image.alt}.jpg`);
+    };
+
+    if(images.length===0){
+        return(
+            <div>
+                <div>No images found</div>
+            </div>
+        );
+    }
+
     return(
-        <div>
+        <section className='display-images'>
             {images.slice(0, 4).map(image=>{
                 return(
-                    <div key={image.id} className='image-Display__item'>
-                        <img src={image.src.medium} alt={image.alt} />
-                        <p>Photographer: {image.photographer}</p>
-                        <button onClick={() =>shareImage(image)}>Share</button>
+                    <div key={image.id} className='display-images__item'>
+                        <img src={image.src.medium} alt={image.alt} className='display-images__img' />
+                        <p  className='display-images__text'>Photographer: {image.photographer}</p>
+                        <div className='display-images__button'>
+                        <button onClick={() =>shareImage(image)} className='display-images__share'>Share</button>
+                        <button onClick={() => downloadImage(image)} className='display-images__share'>Download</button>
+                        </div>
                         </div>
                 );
             })}
-        </div>
+        </section>
     )
 }
