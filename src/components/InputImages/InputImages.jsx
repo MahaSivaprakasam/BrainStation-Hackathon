@@ -23,8 +23,8 @@ const InputImage = () => {
           password: `${API_PW}`
         }
       });
-      console.log(data.result.colors.image_colors);
-      setColors(data.result.colors.image_colors)
+      console.log(data.result.colors.image_colors[0].html_code);
+      setColors(data.result.colors.image_colors[0].html_code)
     }
     catch(error){
       console.log(error);
@@ -45,7 +45,7 @@ const InputImage = () => {
     <div>
       <h1>Color Extractor</h1>
       <ImageList imageURLs={imageURLs} setSelectedImage={setSelectedImage}/>
-      <h3>The colors are: </h3>
+      <h3 style={{ color: colors}}>The primary color is: {colors}</h3>
 
     </div>
   );
